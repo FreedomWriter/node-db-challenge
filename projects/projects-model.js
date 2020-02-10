@@ -1,24 +1,24 @@
 const db = require("../data/db.config");
 
 function find() {
-  return db("resources").select();
+  return db("projects").select();
 }
 
 function findById(id) {
-  return db("resources")
+  return db("projects")
     .where({ id })
     .first();
 }
 
-async function add(resource) {
-  const [id] = await db("resources").insert(resource);
-  return db("resources")
+async function add(project) {
+  const [id] = await db("projects").insert(project);
+  return db("projects")
     .where({ id })
     .first();
 }
 
 async function update(id, body) {
-  await db("resources")
+  await db("projects")
     .where({ id })
     .update(body);
 
@@ -26,7 +26,7 @@ async function update(id, body) {
 }
 
 function remove(id) {
-  return db("resources")
+  return db("projects")
     .where({ id })
     .del();
 }

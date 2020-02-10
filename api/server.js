@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const resourcesRouter = require("../resources/resource-router");
+const projectsRouter = require("../projects/projects-router");
 
 const server = express();
 
@@ -16,6 +17,7 @@ server.use(helmet());
 server.use(morgan("dev"));
 
 server.use("/api/resources", resourcesRouter);
+server.use("/api/projects", projectsRouter);
 
 server.get("/", (req, res) => {
   res.send("<h3>Sprint Challenge</h3>");
