@@ -46,14 +46,6 @@ exports.up = async function(knex) {
   await knex.schema.createTable("contexts", tbl => {
     tbl.increments();
     tbl.text("context").notNullable();
-    tbl
-      .integer("tasks_id")
-      .notNullable()
-      .unsigned()
-      .references("id")
-      .inTable("tasks")
-      .onUpdate("CASCADE")
-      .onDelete("CASCADE");
   });
   await knex.schema.createTable("tasks_contexts", tbl => {
     tbl
